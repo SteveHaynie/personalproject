@@ -18,10 +18,22 @@ massive({
     app.set('db', db);
 });
 
+// app.use(session({
+//     secret: 'begawk',
+//     resave: true,
+//     saveUninitialized: true,
+//     // cookie: {
+//     //     maxAge: 5000
+//     // }
+
+// }));
+
 app.use (bodyparser.json());
 app.use (cors({credentials: true, origin: 'http://localhost:3000'}));
 
 app.post('/login', controller.login);
+app.post('/managementLogin', controller.managementLogin);
+app.post('/managementSignup', controller.managementSignup);
 app.post('/signup', controller.signup);
 
 
