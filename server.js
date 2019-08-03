@@ -30,11 +30,13 @@ massive({
 
 app.use (bodyparser.json());
 app.use (cors({credentials: true, origin: 'http://localhost:3000'}));
-
+app.put('/updateWorkOrder', controller.updateWorkOrder)
+app.get('/workOrders', controller.workOrders);
 app.post('/login', controller.login);
 app.post('/managementLogin', controller.managementLogin);
 app.post('/managementSignup', controller.managementSignup);
 app.post('/signup', controller.signup);
+app.post('/createWorkOrder', controller.createWorkOrder)
 
 
 
