@@ -18,25 +18,27 @@ massive({
     app.set('db', db);
 });
 
-// app.use(session({
-//     secret: 'begawk',
-//     resave: true,
-//     saveUninitialized: true,
-//     // cookie: {
-//     //     maxAge: 5000
-//     // }
+app.use(session({
+    secret: 'begawk',
+    resave: true,
+    saveUninitialized: true,
+    // cookie: {
+    //     maxAge: 5000
+    // }
 
-// }));
+}));
 
 app.use (bodyparser.json());
 app.use (cors({credentials: true, origin: 'http://localhost:3000'}));
 app.put('/updateWorkOrder', controller.updateWorkOrder)
 app.get('/workOrders', controller.workOrders);
+app.get('/currentUser', controller.currentUser);
 app.post('/login', controller.login);
-app.post('/managementLogin', controller.managementLogin);
-app.post('/managementSignup', controller.managementSignup);
+
+
 app.post('/signup', controller.signup);
 app.post('/createWorkOrder', controller.createWorkOrder)
+app.delete('/delete', controller.handleDelete)
 
 
 
