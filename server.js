@@ -23,7 +23,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
     // cookie: {
-    //     maxAge: 5000
+    //     maxAge: 30000
     // }
 
 }));
@@ -34,8 +34,7 @@ app.put('/updateWorkOrder', controller.updateWorkOrder)
 app.get('/workOrders', controller.workOrders);
 app.get('/currentUser', controller.currentUser);
 app.post('/login', controller.login);
-
-
+app.put('/complete_work_order', controller.completeWorkOrder)
 app.post('/signup', controller.signup);
 app.post('/createWorkOrder', controller.createWorkOrder)
 app.delete('/delete', controller.handleDelete)

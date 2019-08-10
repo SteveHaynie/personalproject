@@ -2,7 +2,26 @@ const bcrypt = require("bcrypt");
 const bodyparser = require("body-parser");
 const session = require("express-session");
 
-handleDelete = async (req, res) => {
+
+const completeWorkOrder = async (req,res) => {
+  try {
+    const db = req.app.get("db");
+
+     await db.query(
+      `INSERT INTO work_orders_archive (unit_number,tenant_name, issue, notes) VALUES('${req.body.unit}', '${
+        req.body.tenant}', '${req.body.issue}', '${req.body.notes}');
+        DELETE FROM work_orders WHERE id = '${req.body.id}'; `
+    );
+  
+
+        const workOrder = await db.query ( `SELECT * FROM work_orders ORDER BY id`);
+    res.send(workOrder);
+  } catch (error) {
+      console.error(error)
+  }
+
+}
+const handleDelete = async (req, res) => {
   try {
     const db = req.app.get("db");
 
@@ -19,7 +38,9 @@ handleDelete = async (req, res) => {
 
 }
 
-updateWorkOrder = async (req, res) => {
+
+
+const updateWorkOrder = async (req, res) => {
 
   try {
     const db = req.app.get("db");
@@ -36,12 +57,12 @@ updateWorkOrder = async (req, res) => {
   }
 };
 
-currentUser = (req, res) => {
+const currentUser = (req, res) => {
 
 res.send(req.session.user)
 }
 
-workOrders = async (req, res) => {
+const workOrders = async (req, res) => {
   try {
     const db = req.app.get("db");
 
@@ -70,7 +91,7 @@ createWorkOrder = async (req, res) => {
   } catch (error) {}
 };
 
-login = async (req, res) => {
+const login = async (req, res) => {
   try {
     const db = req.app.get("db");
 
@@ -92,7 +113,7 @@ login = async (req, res) => {
 };
 
 
-signup = async (req, res, next) => {
+const signup = async (req, res, next) => {
   try {
     const db = req.app.get("db");
 
@@ -120,10 +141,10 @@ signup = async (req, res, next) => {
 module.exports = {
   login,
   signup,
-  
   workOrders,
   createWorkOrder,
   updateWorkOrder,
   currentUser,
-  handleDelete
+  handleDelete,
+  completeWorkOrder
 };
