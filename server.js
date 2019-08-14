@@ -37,7 +37,7 @@ app.post('/login', controller.login);
 app.put('/complete_work_order', controller.completeWorkOrder)
 app.post('/signup', controller.signup);
 app.post('/createWorkOrder', controller.createWorkOrder)
-app.delete('/delete', controller.handleDelete)
+app.delete('/delete_work_order/:id', controller.handleDelete)
 
 
 

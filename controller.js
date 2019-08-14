@@ -25,12 +25,9 @@ const handleDelete = async (req, res) => {
   try {
     const db = req.app.get("db");
 
-     await db.query(
-      `UPDATE work_orders SET unit_number = ${req.body.unit}, tenant_name = '${
-        req.body.tenant}', issue = '${req.body.issue}' WHERE id = ${req.body.id};
-        `
-    );
-        const workOrder = await db.query ( `SELECT * FROM work_orders ORDER BY id`);
+    await db.query(`DELETE FROM work_orders WHERE id = '${req.params.id}';`);
+
+  const workOrder = await db.query ( `SELECT * FROM work_orders ORDER BY id`);
     res.send(workOrder);
   } catch (error) {
       console.error(error)
@@ -46,7 +43,7 @@ const updateWorkOrder = async (req, res) => {
     const db = req.app.get("db");
 
      await db.query(
-      `UPDATE work_orders SET unit_number = ${req.body.unit}, tenant_name = '${
+      `UPDATE work_orders SET unit_number = '${req.body.unit}', tenant_name = '${
         req.body.tenant}', issue = '${req.body.issue}' WHERE id = ${req.body.id};
         `
     );
@@ -74,7 +71,7 @@ const workOrders = async (req, res) => {
   }
 };
 
-createWorkOrder = async (req, res) => {
+const createWorkOrder = async (req, res) => {
   try {
     const db = req.app.get("db");
 
@@ -124,7 +121,7 @@ const signup = async (req, res, next) => {
       last_name: req.body.lastName,
       username: req.body.email,
       password: hash,
-      role: 'Tenant'
+      role: req.body.role
     });
 
     delete newUser.password;
