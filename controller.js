@@ -109,6 +109,11 @@ const login = async (req, res) => {
   }
 };
 
+const logout = async (req, res) => {
+  return req.session.destroy((err) => {res.send("succesfully logged out")})
+
+}
+
 
 const signup = async (req, res, next) => {
   try {
@@ -143,5 +148,6 @@ module.exports = {
   updateWorkOrder,
   currentUser,
   handleDelete,
-  completeWorkOrder
+  completeWorkOrder,
+  logout
 };

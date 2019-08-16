@@ -22,9 +22,7 @@ app.use(session({
     secret: 'begawk',
     resave: true,
     saveUninitialized: true,
-    // cookie: {
-    //     maxAge: 30000
-    // }
+  
 
 }));
 
@@ -32,8 +30,9 @@ app.use (bodyparser.json());
 app.use (cors({credentials: true, origin: 'http://localhost:3000'}));
 app.put('/updateWorkOrder', controller.updateWorkOrder)
 app.get('/workOrders', controller.workOrders);
-app.get('/currentUser', controller.currentUser);
+app.get('/currentuser', controller.currentUser);
 app.post('/login', controller.login);
+app.get('/logout', controller.logout)
 app.put('/complete_work_order', controller.completeWorkOrder)
 app.post('/signup', controller.signup);
 app.post('/createWorkOrder', controller.createWorkOrder)
