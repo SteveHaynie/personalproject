@@ -3,13 +3,29 @@ const bodyparser = require("body-parser");
 const session = require("express-session");
 
 
+
+const tenantWorkOrders = async (req, res) => {
+  try {
+    const db = req.app.get("db");
+
+    await db.query(`SELECT * FROM work_orders WHERE user_id = '${req.params.id}';`);
+
+  const workOrder = await db.query ( `SELECT * FROM work_orders ORDER BY id`);
+    res.send(workOrder);
+  } catch (error) {
+      console.error(error)
+  }
+
+}
+
+
 const completeWorkOrder = async (req,res) => {
   try {
     const db = req.app.get("db");
 
      await db.query(
-      `INSERT INTO work_orders_archive (unit_number,tenant_name, issue, notes) VALUES('${req.body.unit}', '${
-        req.body.tenant}', '${req.body.issue}', '${req.body.notes}');
+      `INSERT INTO work_orders_archive (unit_number,tenant_name, issue, notes, completed_at) VALUES('${req.body.unit}', '${
+        req.body.tenant}', '${req.body.issue}', '${req.body.notes}', NOW());
         DELETE FROM work_orders WHERE id = '${req.body.id}'; `
     );
   
@@ -75,12 +91,15 @@ const createWorkOrder = async (req, res) => {
   try {
     const db = req.app.get("db");
 
-    const newWorkOrder = await db.work_orders.insert({
-      unit_number: req.body.unit,
-      tenant_name: req.body.tenant,
-      issue: req.body.issue,
-      user_id: req.body.user
-    });
+    const userID = await db.query (
+      ` SELECT id FROM users WHERE unit_number = '${req.body.unitNumber}'; `
+   )
+    const newWorkOrder = await  db.query(
+      `INSERT INTO work_orders (unit_number ,tenant_name, issue, user_id, created_at ) VALUES('${req.body.unitNumber}', '${
+        req.body.tenantName}', '${req.body.issue}', '${userID[0].id}', NOW());`
+    );
+    
+
     const workOrders = await db.query(`SELECT * FROM work_orders ORDER BY id`);
 
 
@@ -121,13 +140,9 @@ const signup = async (req, res, next) => {
 
     const hash = await bcrypt.hash(req.body.password, 10);
 
-    const newUser = await db.users.insert({
-      first_name: req.body.firstName,
-      last_name: req.body.lastName,
-      username: req.body.email,
-      password: hash,
-      role: req.body.role
-    });
+    const newUser = await db.query(
+      `INSERT INTO users (first_name, last_name, username, password, unit_number, role) VALUES('${req.body.firstName}',
+       '${req.body.lastName}', '${req.body.email}', '${hash}', '${req.body.unitNumber}', '${req.body.role}');`)
 
     delete newUser.password;
 
@@ -149,5 +164,6 @@ module.exports = {
   currentUser,
   handleDelete,
   completeWorkOrder,
-  logout
+  logout,
+  tenantWorkOrders
 };
