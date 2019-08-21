@@ -8,10 +8,10 @@ const tenantWorkOrders = async (req, res) => {
   try {
     const db = req.app.get("db");
 
-    await db.query(`SELECT * FROM work_orders WHERE user_id = '${req.params.id}';`);
+    const tenantWorkOrders = await db.query(`SELECT * FROM work_orders WHERE user_id = '${req.params.id}';`);
 
-  const workOrder = await db.query ( `SELECT * FROM work_orders ORDER BY id`);
-    res.send(workOrder);
+ 
+    res.send(tenantWorkOrders);
   } catch (error) {
       console.error(error)
   }
@@ -24,8 +24,8 @@ const completeWorkOrder = async (req,res) => {
     const db = req.app.get("db");
 
      await db.query(
-      `INSERT INTO work_orders_archive (unit_number,tenant_name, issue, notes, completed_at) VALUES('${req.body.unit}', '${
-        req.body.tenant}', '${req.body.issue}', '${req.body.notes}', NOW());
+      `INSERT INTO work_orders_archive (unit_number,tenant_name, issue, notes, completed_at, created_at, user_id) VALUES('${req.body.unit}', '${
+        req.body.tenant}', '${req.body.issue}', '${req.body.notes}', NOW(), '${req.body.created_at}', '${req.body.user_id}' );
         DELETE FROM work_orders WHERE id = '${req.body.id}'; `
     );
   
