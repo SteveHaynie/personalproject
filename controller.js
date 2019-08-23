@@ -2,7 +2,29 @@ const bcrypt = require("bcrypt");
 const bodyparser = require("body-parser");
 const session = require("express-session");
 
+const searchworkordersarchive = async (req, res) => {
+  try {
+    const db = req.app.get("db");
 
+    const workOrders = await db.query(`SELECT * FROM work_orders_archive WHERE unit_number = '${req.params.id}'`);
+
+    res.send(workOrders);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const workordersarchive = async (req, res) => {
+  try {
+    const db = req.app.get("db");
+
+    const workOrders = await db.query(`SELECT * FROM work_orders_archive ORDER BY id`);
+
+    res.send(workOrders);
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 const tenantWorkOrders = async (req, res) => {
   try {
@@ -165,5 +187,7 @@ module.exports = {
   handleDelete,
   completeWorkOrder,
   logout,
-  tenantWorkOrders
+  tenantWorkOrders,
+  workordersarchive,
+  searchworkordersarchive
 };

@@ -28,10 +28,12 @@ app.use(session({
 
 app.use (bodyparser.json());
 app.use (cors({credentials: true, origin: 'http://localhost:3000'}));
-app.put('/updateWorkOrder', controller.updateWorkOrder)
-app.get('/workOrders', controller.workOrders);
+app.put('/updateworkorder', controller.updateWorkOrder)
+app.get('/workorders', controller.workOrders);
 app.get('/currentuser', controller.currentUser);
-app.get("/tenant_work_orders/:id" , controller.tenantWorkOrders)
+app.get("/tenant_work_orders/:id" , controller.tenantWorkOrders);
+app.get('/workordersarchive', controller.workordersarchive)
+app.get('/search_work_orders_archive/:id' , controller.searchworkordersarchive)
 app.post('/login', controller.login);
 app.get('/logout', controller.logout)
 app.put('/complete_work_order', controller.completeWorkOrder)
