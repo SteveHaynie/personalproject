@@ -6,7 +6,9 @@ const searchworkordersarchive = async (req, res) => {
   try {
     const db = req.app.get("db");
 
-    const workOrders = await db.query(`SELECT * FROM work_orders_archive WHERE unit_number = '${req.params.id}'`);
+    const workOrders = await db.query(
+      `SELECT * FROM work_orders_archive WHERE unit_number = '${req.params.id}'`
+    );
 
     res.send(workOrders);
   } catch (error) {
@@ -18,7 +20,9 @@ const workordersarchive = async (req, res) => {
   try {
     const db = req.app.get("db");
 
-    const workOrders = await db.query(`SELECT * FROM work_orders_archive ORDER BY id`);
+    const workOrders = await db.query(
+      `SELECT * FROM work_orders_archive ORDER BY id`
+    );
 
     res.send(workOrders);
   } catch (error) {
@@ -30,72 +34,62 @@ const tenantWorkOrders = async (req, res) => {
   try {
     const db = req.app.get("db");
 
-    const tenantWorkOrders = await db.query(`SELECT * FROM work_orders WHERE user_id = '${req.params.id}';`);
+    const tenantWorkOrders = await db.query(
+      `SELECT * FROM work_orders WHERE user_id = '${req.params.id}';`
+    );
 
- 
     res.send(tenantWorkOrders);
   } catch (error) {
-      console.error(error)
+    console.error(error);
   }
+};
 
-}
-
-
-const completeWorkOrder = async (req,res) => {
+const completeWorkOrder = async (req, res) => {
   try {
     const db = req.app.get("db");
 
-     await db.query(
-      `INSERT INTO work_orders_archive (unit_number,tenant_name, issue, notes, completed_at, created_at, user_id) VALUES('${req.body.unit}', '${
-        req.body.tenant}', '${req.body.issue}', '${req.body.notes}', NOW(), '${req.body.created_at}', '${req.body.user_id}' );
+    await db.query(
+      `INSERT INTO work_orders_archive (unit_number,tenant_name, issue, notes, completed_at, created_at, user_id) VALUES('${req.body.unit}', '${req.body.tenant}', '${req.body.issue}', '${req.body.notes}', NOW(), '${req.body.created_at}', '${req.body.user_id}' );
         DELETE FROM work_orders WHERE id = '${req.body.id}'; `
     );
-  
 
-        const workOrder = await db.query ( `SELECT * FROM work_orders ORDER BY id`);
+    const workOrder = await db.query(`SELECT * FROM work_orders ORDER BY id`);
     res.send(workOrder);
   } catch (error) {
-      console.error(error)
+    console.error(error);
   }
-
-}
+};
 const handleDelete = async (req, res) => {
   try {
     const db = req.app.get("db");
 
     await db.query(`DELETE FROM work_orders WHERE id = '${req.params.id}';`);
 
-  const workOrder = await db.query ( `SELECT * FROM work_orders ORDER BY id`);
+    const workOrder = await db.query(`SELECT * FROM work_orders ORDER BY id`);
     res.send(workOrder);
   } catch (error) {
-      console.error(error)
+    console.error(error);
   }
-
-}
-
-
+};
 
 const updateWorkOrder = async (req, res) => {
-
   try {
     const db = req.app.get("db");
 
-     await db.query(
-      `UPDATE work_orders SET unit_number = '${req.body.unit}', tenant_name = '${
-        req.body.tenant}', issue = '${req.body.issue}' WHERE id = ${req.body.id};
+    await db.query(
+      `UPDATE work_orders SET unit_number = '${req.body.unit}', tenant_name = '${req.body.tenant}', issue = '${req.body.issue}' WHERE id = ${req.body.id};
         `
     );
-        const workOrder = await db.query ( `SELECT * FROM work_orders ORDER BY id`);
+    const workOrder = await db.query(`SELECT * FROM work_orders ORDER BY id`);
     res.send(workOrder);
   } catch (error) {
-      console.error(error)
+    console.error(error);
   }
 };
 
 const currentUser = (req, res) => {
-
-res.send(req.session.user)
-}
+  res.send(req.session.user);
+};
 
 const workOrders = async (req, res) => {
   try {
@@ -113,19 +107,22 @@ const createWorkOrder = async (req, res) => {
   try {
     const db = req.app.get("db");
 
-    const userID = await db.query (
+    const userID = await db.query(
       ` SELECT id FROM users WHERE unit_number = '${req.body.unitNumber}'; `
-   )
-    const newWorkOrder = await  db.query(
-      `INSERT INTO work_orders (unit_number ,tenant_name, issue, user_id, created_at ) VALUES('${req.body.unitNumber}', '${
-        req.body.tenantName}', '${req.body.issue}', '${userID[0].id}', NOW());`
     );
-    
+    if (userID.length === 0) {
+      return res.status(400).send("User Not Found");
+    } else {
+      const newWorkOrder = await db.query(
+        `INSERT INTO work_orders (unit_number ,tenant_name, issue, user_id, created_at ) VALUES('${req.body.unitNumber}', '${req.body.tenantName}', '${req.body.issue}', '${userID[0].id}', NOW());`
+      );
 
-    const workOrders = await db.query(`SELECT * FROM work_orders ORDER BY id`);
+      const workOrders = await db.query(
+        `SELECT * FROM work_orders ORDER BY id`
+      );
 
-
-    res.send(workOrders);
+      res.send(workOrders);
+    }
   } catch (error) {}
 };
 
@@ -135,7 +132,7 @@ const login = async (req, res) => {
 
     const [user] = await db.users.find({ username: req.body.username });
     if (!user) return res.status(400).send("please enter valid credentials");
-    
+
     const verified = await bcrypt.compare(req.body.password, user.password);
     if (!verified)
       return res.status(400).send("please enter valid credentials");
@@ -151,10 +148,10 @@ const login = async (req, res) => {
 };
 
 const logout = async (req, res) => {
-  return req.session.destroy((err) => {res.send("succesfully logged out")})
-
-}
-
+  return req.session.destroy(err => {
+    res.send("succesfully logged out");
+  });
+};
 
 const signup = async (req, res, next) => {
   try {
@@ -164,7 +161,8 @@ const signup = async (req, res, next) => {
 
     const newUser = await db.query(
       `INSERT INTO users (first_name, last_name, username, password, unit_number, role) VALUES('${req.body.firstName}',
-       '${req.body.lastName}', '${req.body.email}', '${hash}', '${req.body.unitNumber}', '${req.body.role}');`)
+       '${req.body.lastName}', '${req.body.email}', '${hash}', '${req.body.unitNumber}', '${req.body.role}');`
+    );
 
     delete newUser.password;
 
@@ -174,8 +172,6 @@ const signup = async (req, res, next) => {
     res.status(500).send(error);
   }
 };
-
-
 
 module.exports = {
   login,
