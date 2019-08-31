@@ -28,17 +28,21 @@ app.use(session({
 
 app.use (bodyparser.json());
 app.use (cors({credentials: true, origin: 'http://localhost:3000'}));
-app.put('/updateworkorder', controller.updateWorkOrder)
+
 app.get('/workorders', controller.workOrders);
 app.get('/currentuser', controller.currentUser);
 app.get("/tenant_work_orders/:id" , controller.tenantWorkOrders);
 app.get('/workordersarchive', controller.workordersarchive)
 app.get('/search_work_orders_archive/:id' , controller.searchworkordersarchive)
-app.post('/login', controller.login);
 app.get('/logout', controller.logout)
+
+app.put('/updateworkorder', controller.updateWorkOrder)
 app.put('/complete_work_order', controller.completeWorkOrder)
+
+app.post('/login', controller.login);
 app.post('/signup', controller.signup);
 app.post('/create_work_order', controller.createWorkOrder)
+
 app.delete('/delete_work_order/:id', controller.handleDelete)
 
 
