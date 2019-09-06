@@ -1,0 +1,158 @@
+.Tenantportal {
+    background: #7E9181;
+    width: 100vw;
+    height: 100%;
+    background-image: url("../background.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: black;
+}
+
+.welcometenant {
+  font-size: 50px;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+}
+.tenantlogoutbutton {
+  height: 35px;
+  width: 100px;
+  border-radius: 5px;
+  align-self: right;
+  margin-left: 35px;
+}
+.tenantnavbarcontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  height: 80%;
+}
+.tenantnavbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+
+.tenantnavbarbutton {
+  width: calc(100% - 30px);
+  height: 100px;
+  margin: 30px;
+  border-radius: 10px;
+  font-size: 30px;
+}
+
+
+
+
+@media (max-width: 1025px) {
+  .issue {
+    font-size: 0.7em;
+  }
+  .welcometenant {
+    font-size: 25px;
+
+    padding: 10px;
+  }
+  .tenantnavbarbutton {
+    width: 20%;
+    height: 70px;
+    margin: 5px;
+    border-radius: 10px;
+    font-size: 10px;
+  }
+  .tenantnavbar {
+   
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0px;
+    width: 90%;
+    height: 20%;
+    margin: 10px;
+  }
+  .tenantnavbarcontainer {
+    
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+  }
+}
+
+@media (max-width: 367px) {
+  .tenantnavbar {
+  
+    width: 90%;
+    height: 350px;
+    margin: 10px;
+    
+  }
+  .tenantnavbarbutton {
+    width: 40%;
+    height: 30px;
+    margin: 5px;
+   
+  }
+
+}
+
+@media (max-width: 500px) {
+  .tenantnavbar {
+    height: 300px;
+   
+    
+  }
+  .tenantnavbarbutton {
+    width: 40%;
+    height: 30px;
+   
+  }
+
+}
+
+@media (max-height: 800px) {
+ 
+  .tenantwelcome {
+    font-size: 25px;
+
+    padding: 10px;
+  }
+  .tenantnavbarbutton {
+   height: 45px;
+  }
+  .tenantnavbar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0px;
+    width: 90%;
+    
+    
+  }
+  .tenantnavbarcontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 80%;
+  }
+
+}
+
+@media (max-height: 415px ) {
+  .tenantnavbarbutton {
+    height: 30px;
+
+  }
+
+}

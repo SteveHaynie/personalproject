@@ -6,14 +6,12 @@ const controller = require('./controller.js');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
 const massive = require('massive');
+const path = require('path');
 
-massive({
-    host: 'localhost',
-    port: 5432,
-    database: '',
-    user: '',
-    password: ''
-}).then(db => {
+require ('dotenv').config();
+
+
+massive(process.env.CONNECTION_STRING).then(db => {
     console.log("connected to db")
     app.set('db', db);
 });
@@ -25,6 +23,8 @@ app.use(session({
   
 
 }));
+
+app.use(express.static(path.join('path', 'path')));
 
 app.use (bodyparser.json());
 app.use (cors({credentials: true, origin: 'http://localhost:3000'}));

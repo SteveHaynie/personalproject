@@ -1,0 +1,117 @@
+.modifycontainer {
+  width: 70%;
+  height: 700px;
+  background-image: linear-gradient(to bottom right, #2e3532d3, rgba(199, 206, 219, 0.836));
+  border-radius: 10px;
+  color: black;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: scroll;
+  margin-top: 15px;
+  box-shadow: 7px 7px 13px #000000d2;
+}
+
+.modifybox {
+  height: 80%;
+  width: 80%;
+  background: rgba(160, 170, 178, 0.747);
+  border: 1px solid black;
+  font-size: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px;
+  border-radius: 5px;
+  margin: 5px;
+}
+.modifyheader {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+.modifyunitnumber {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.modifytextarea {
+  width: 80%;
+  height: 20%;
+  text-align: center;
+  font-size: 0.5em;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.modifybuttoncontainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+.modifysubmitbutton {
+  width: 100%;
+  height: 45px;
+  margin: 5px;
+  border-radius: 10px;
+  font-size: 1em;
+  background: white;
+}
+
+@media (max-width: 1025px) {
+  .modifyheader {
+    font-size: 1em;
+    margin-bottom: 5px;
+  }
+  .modifyunitnumber {
+    font-size: 1em;
+    margin-bottom: 5px;
+  }
+  .modifybox {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 416px) {
+  .modifyheader {
+    font-size: 0.5em;
+  }
+  .modifysubmitbutton {
+    height: 20px;
+    font-size: .3em;
+  }
+}
+
+@media (max-height: 800px) {
+}
+@media (max-height: 545px) {
+  .modifycontainer {
+    margin-top: 10px;
+
+  }
+  .modifyheader {
+    font-size: .5em;
+    margin-bottom: 5px;
+  }
+  .modifyunitnumber {
+    font-size: .5em;
+    margin-bottom: 5px;
+  }
+  .modifytextarea {
+    height: 15px;
+    font-size: .3em;
+  }
+  .modifybox {
+    justify-content: flex-start;
+  }
+  .modifysubmitbutton {
+    height: 20px;
+    font-size: .3em;
+  }
+ 
+}

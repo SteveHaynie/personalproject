@@ -1,0 +1,92 @@
+.logincontainer {
+    background:  #A0AAB2;
+    width: 100vw;
+    height: 81vh;
+    display: flex;
+    justify-content: center;
+    align-items:space-around;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.loginbox {
+    width: 45%;
+    height: 50%;
+    background: rgb(199, 206, 219);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    transition: width 1s;
+    box-shadow: 7px 7px 13px #000000d2;
+}
+
+.loginbox:hover {
+    width: 55%;
+
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+
+
+.logininputfield {
+    width: calc(100% - 300px);
+    height: 25px;
+    margin: 25px;
+    border-radius: 7px;
+    background:  rgba(255, 255, 255, 0.6);
+    text-align: center;
+    transition: width, margin 1s;
+}
+
+
+.loginbutton {
+    width: 35%;
+    font-size: .8em;
+    height: 25px;
+    margin: 25px;
+    border-radius: 7px;
+    transition: width, margin 1s;
+
+}
+
+@media (max-width: 600px) {
+    .loginbox {
+        width: 90%;
+    }
+}
+
+@media (max-width: 1025px) {
+    .logininputfield {
+        width: 60%;
+        
+       
+     
+    }
+
+}
+
+@media (max-height: 500px) {
+    .logininputfield {
+        margin: 5px;
+        
+       
+     
+    }
+
+    .loginbutton {
+       
+        margin: 5px;
+       
+    
+    }
+
+}

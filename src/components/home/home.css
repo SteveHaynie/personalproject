@@ -1,0 +1,43 @@
+.Home {
+  background: black;
+  width: 100vw;
+  height: 80vh;
+  overflow: hidden;
+}
+
+.background-video {
+  height: 100%;
+  width: 100%;
+  
+  padding-left: none;
+}
+
+@media (max-width: 767px) {
+  .background-video {
+    display: none;
+  }
+  body {
+    background-size: cover;
+  }
+  .Home {
+    background: url("../background.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .background-video {
+   
+    height: 100%;
+  }
+}
+
+@media (min-aspect-ratio: 16/9) {
+  #videoBG {
+    width: 100%;
+    height: auto;
+  }
+}
+
+

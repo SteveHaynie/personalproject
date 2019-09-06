@@ -1,0 +1,114 @@
+.addlogincontainer {
+    width: 60%;
+    height: 700px;
+    background-image: linear-gradient(to bottom right, #2e3532d3, rgba(199, 206, 219, 0.836));
+    border-radius: 10px;
+    color: black;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: scroll;
+    box-shadow: 7px 7px 13px #000000d2;
+}
+
+.addloginbox {
+    height: 80%;
+    width: 80%;
+    background: rgba(160, 170, 178, 0.747);
+    border: 1px solid black;
+    font-size: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px;
+    border-radius: 5px;
+    box-shadow: 4px 4px 15px #000000d2;
+  }
+  .addloginheader {
+    font-size: 2em;
+    margin-bottom: 20px;
+    
+  }
+
+  .addloginselect {
+    margin: 20px;
+    width: 40%;
+    text-align: center;
+    border: 1px solid black;
+  }
+
+  .addlogininput {
+    width: 60%;
+    height: 25px;
+    text-align: center;
+    font-size:.5em;
+    border: 1px solid black;
+  }
+
+  .addloginbuttoncontainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+  }
+
+  .addloginsubmitbutton {
+    width: 100%;
+    height: 45px;
+    margin: 5px;
+    border-radius: 10px;
+    font-size: 1em;
+    background: white;
+  }
+
+  @media (max-width: 1500px) {
+    
+  }
+  
+  @media (max-width: 1025px) {
+    .addlogincontainer {
+      margin-top: 30px;
+
+    }
+    .addloginheader {
+      font-size: 1em;
+    }
+    .addlogininput{
+width: 90%;
+    }
+    .addloginselect{
+      width: 90%;
+    }
+    
+  }
+  
+  @media (max-width: 367px) {
+   
+  
+  }
+  
+  @media (max-width: 500px) {
+    .addloginheader {
+      font-size: .5em;
+    }
+    .addloginsubmitbutton{
+      font-size: .5em;
+    }
+    .addlogincontainer{
+      width: 90%;
+    }
+  
+  }
+  
+  @media (max-height: 800px) {
+   
+  }
+  
+  @media (max-height: 415px ) {
+ 
+  }
+  

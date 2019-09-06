@@ -1,0 +1,127 @@
+.completecontainer {
+    width: 60%;
+    height: 700px;
+    background-image: linear-gradient(to bottom right, #2e3532d3, rgba(199, 206, 219, 0.836));
+    border-radius: 10px;
+    color: black;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: scroll;
+    box-shadow: 7px 7px 13px #000000d2;
+
+}
+
+.completebox {
+    height: 80%;
+    width: 80%;
+    background: rgba(160, 170, 178, 0.747);
+    border: 1px solid black;
+    font-size: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 5px;
+  }
+  .completeheader {
+    font-size: 2em;
+    margin-bottom: 20px;
+    
+  }
+  .completeunitnumber {
+    font-size: 2em;
+    margin-bottom: 20px;
+    
+  }
+
+  .completetextarea {
+    width: 80%;
+    height: 10%;
+    text-align: center;
+    font-size:.5em;
+    border: 1px solid black;
+    margin: 3px;
+  }
+
+  .completetextarea:hover {
+    cursor: text;
+
+  }
+
+  .completebuttoncontainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+  }
+
+  .completesubmitbutton {
+    width: 100%;
+    height: 45px;
+    margin: 5px;
+    border-radius: 10px;
+    font-size: 1em;
+    background: white;
+  }
+
+  @media (max-width: 1500px) {
+    
+  }
+  
+  @media (max-width: 1025px) {
+    .completeheader {
+      font-size: 1em;
+      margin-bottom: 5px;
+      
+    }
+    .completesubmitbutton {
+     
+      font-size: .5em;
+     
+    }
+  }
+  
+  @media (max-width: 367px) {
+   
+  
+  }
+  
+  @media (max-width: 500px) {
+  
+  
+  }
+  
+  @media (max-height: 800px) {
+    .completebox {
+      overflow: scroll;
+    }
+    .completetextarea {
+      font-size: .2em;
+    }
+  }
+  
+  @media (max-height: 415px ) {
+    .completecontainer {
+      margin-top: 25px;
+      margin-bottom: 5px;
+
+    }
+    .completesubmitbutton  {
+      height: 10px;
+      font-size: 5px;
+    }
+  .completebox {
+    font-size: .75em;
+   
+  }
+  .completetextarea {
+    font-size: 5px;
+  }
+  }
+  
