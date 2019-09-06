@@ -2,8 +2,8 @@ import React from "react";
 import "./Tenantportal.css";
 import { Route } from "react-router-dom";
 import axios from "axios";
-import TenantWorkOrder from "../tenantworkorder/tenantworkorder.js.js";
-import TenantCreateNew from "../tenantcreatenew/tenantcreatenew.js.js";
+import TenantWorkOrder from "../tenantworkorder/tenantworkorder.js";
+import TenantCreateNew from "../tenantcreatenew/tenantcreatenew.js";
 
 class Tenantportal extends React.Component {
   constructor(props) {

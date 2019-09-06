@@ -1,13 +1,13 @@
 import React from "react";
-import Navbar from "./components/navbar/navbar.js.js";
+import Navbar from "./components/navbar/navbar.js";
 import "./App.css";
 import "./reset.css";
-import Home from "./components/home/home.js.js";
-import Login from "./components/login/login.js.js";
-import Reroute from "./reroute.js.js";
-import Managementportal from "./components/managementportal/Managementportal.js.js";
+import Home from "./components/home/home.js";
+import Login from "./components/login/login.js";
+import Reroute from "./reroute.js";
+import Managementportal from "./components/managementportal/Managementportal.js";
 import axios from "axios";
-import Tenantportal from "./components/tenantportal/Tenantportal.js.js";
+import Tenantportal from "./components/tenantportal/Tenantportal.js";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 

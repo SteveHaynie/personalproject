@@ -1,12 +1,12 @@
 import React from "react";
 import "./Managementportal.css";
 import axios from "axios";
-import Modify from "../modify/modify.js.js";
-import WorkOrder from "../managementworkorder/workOrder.js.js";
-import CreateNew from "../createnew/createNew.js.js";
-import Complete from "../complete/complete.js.js";
-import AddLogin from "../addlogin/addLogin.js.js";
-import WorkOrdersArchive from "../managementworkorderarchive/workordersarchive.js.js";
+import Modify from "../modify/modify.js";
+import WorkOrder from "../managementworkorder/workOrder.js";
+import CreateNew from "../createnew/createNew.js";
+import Complete from "../complete/complete.js";
+import AddLogin from "../addlogin/addLogin.js";
+import WorkOrdersArchive from "../managementworkorderarchive/workordersarchive.js";
 import { Route } from "react-router-dom";
 
 class Managementportal extends React.Component {
